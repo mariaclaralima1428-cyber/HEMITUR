@@ -1,6 +1,7 @@
 /* Estilos Gerais */
 html {
-  scroll-behavior: smooth; /* para ter uma rolagem mais dinâmica */
+  scroll-behavior: smooth;
+  /* para ter uma rolagem mais dinâmica */
 }
 
 body {
@@ -16,12 +17,16 @@ body {
 header {
   position: fixed;
   justify-content: space-between;
-  top: 0;/*para definir a posição vertical de um elemento em relação à sua posição padrão ou ao elemento pai */
-  width: 100%;/*definir a largura de um elemento */
-  background-color:#042c4f;
-  padding: 10px 30px;/*espaço entre conteudo de um elemento e suas bordas */
+  top: 0;
+  /*para definir a posição vertical de um elemento em relação à sua posição padrão ou ao elemento pai */
+  width: 100%;
+  /*definir a largura de um elemento */
+  background-color: #042c4f;
+  padding: 10px 30px;
+  /*espaço entre conteudo de um elemento e suas bordas */
   text-align: center;
-  z-index: 1000; /* ordem de empilhamento*/
+  z-index: 1000;
+  /* ordem de empilhamento*/
 }
 
 .navbar {
@@ -29,24 +34,123 @@ header {
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-  margin:0 auto;
-  padding:10px 40px;
+  margin: 0 auto;
+  padding: 10px 40px;
   height: 80px;
 
 }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: rgb(164, 148, 148);
-      font-weight: bold;
-      text-decoration: none;
-    }
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: rgb(164, 148, 148);
+  font-weight: bold;
+  text-decoration: none;
+}
 
-.logo img{
-   height: 104px;
-  width: auto;
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  position: relative;
+}
+
+/* SETA */
+.seta {
+  font-size: 22px;
+  color: gold;
+  transition: 0.3s;
+}
+
+.logo-container:hover .seta {
+  transform: translateX(-5px);
+}
+
+/* TEXTO (só aparece no hover) */
+.texto-hover {
+  position: absolute;
+  left: 160px;
+  opacity: 0;
+  color: gold;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.logo-container:hover .texto-hover {
+  opacity: 1;
+}
+
+/* LOGO */
+.logo {
+  width: 130px;
+  height: 130px;
+  perspective: 1000px;
+  margin: 10px;
+  margin-top: 50px;
+}
+
+.logo-inner {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 217, 0, 0.766);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+
+  position: relative;
+  transform-style: preserve-3d;
+
+  animation: girarSuave 10s ease-in-out infinite;
+}
+
+/* faces */
+.logo-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  backface-visibility: hidden;
+}
+
+.logo-front img {
+  width: 70px;
+}
+
+.logo-back {
+  transform: rotateY(180deg);
+}
+
+.logo-back img {
+  width: 90px;
+}
+
+/* ANIMAÇÃO */
+@keyframes girarSuave {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  45% {
+    transform: rotateY(0deg);
+  }
+
+  55% {
+    transform: rotateY(180deg);
+  }
+
+  90% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
 }
 
 .menu {
@@ -126,21 +230,27 @@ header {
   flex: 1;
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Para adaptar em telas menores */
- 
+  flex-wrap: wrap;
+  /* Para adaptar em telas menores */
+
 }
+
 .section-pag h2 {
-font-family: 'Cinzel', serif;
- font-size:xx-large;
-   margin-bottom: 1px; /* Reduz espaço abaixo do título */
+  font-family: 'Cinzel', serif;
+  font-size: xx-large;
+  margin-bottom: 1px;
+  /* Reduz espaço abaixo do título */
 }
-.section-pag p{
- font-family: 'Cormorant Garamond', serif;
+
+.section-pag p {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 22px;
-   margin-top: 0;       /* Remove espaço acima do parágrafo */
+  margin-top: 0;
+  /* Remove espaço acima do parágrafo */
   line-height: 1.4;
 }
-.section{
+
+.section {
   max-width: 1000px;
   width: 90%;
   margin: 80px auto;
@@ -151,17 +261,22 @@ font-family: 'Cinzel', serif;
   flex: 1;
   display: flex;
   align-items: center;
-  gap: 20px; /* Espaço entre imagem e texto */
-  flex-wrap: wrap; /* Para adaptar em telas menores */
+  gap: 20px;
+  /* Espaço entre imagem e texto */
+  flex-wrap: wrap;
+  /* Para adaptar em telas menores */
 
 }
+
 /* Seções */
 
 .content-box {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espaço entre imagem e texto */
-  flex-wrap: wrap; /* Para adaptar em telas menores */
+  gap: 20px;
+  /* Espaço entre imagem e texto */
+  flex-wrap: wrap;
+  /* Para adaptar em telas menores */
 }
 
 .imagem-lateral {
@@ -169,31 +284,34 @@ font-family: 'Cinzel', serif;
   max-width: 300px;
   border-radius: 10px;
 }
- .botao-container {
-      width: 100%;
-      text-align: center;
-      margin-top: 20px;
-      position: relative;
-      display: inline-block;
-    }
 
-    .meu-botao {
-      padding: 12px 24px;
-      background-color: #f5e16f;
-      color: rgb(0, 0, 0);
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-       top: 50%;         /* centralizado verticalmente */
-  left: 50%;        /* centralizado horizontalmente */
+.botao-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.meu-botao {
+  padding: 12px 24px;
+  background-color: #f5e16f;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  top: 50%;
+  /* centralizado verticalmente */
+  left: 50%;
+  /* centralizado horizontalmente */
   transform: translate(-50%, -50%);
-      cursor: pointer;
-      position: absolute;
-    }
+  cursor: pointer;
+  position: absolute;
+}
 
-    .meu-botao:hover {
-      background-color: #f6ca2d;
-    }
+.meu-botao:hover {
+  background-color: #f6ca2d;
+}
 
 
 /* Responsividade para telas pequenas */
