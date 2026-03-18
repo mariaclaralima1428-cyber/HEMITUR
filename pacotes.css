@@ -20,7 +20,7 @@ body {
 
 header {
   background-color: var(--section-bg);
-  padding: 20px 30px;
+  padding: 2px 100px;
   display: flex;
   background-color: #042c4f;
   justify-content: space-between;
@@ -141,7 +141,7 @@ header {
   list-style: none;
   display: flex;
   padding: 0;
-  margin: 20px;
+  margin: 0;
   gap: 20px;
 
 }
