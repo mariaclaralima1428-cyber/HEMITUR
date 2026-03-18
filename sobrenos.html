@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,37 +29,183 @@
     }
 
     header {
-      background-color:  #042c4f;
-      padding: 20px 30px;
+      background-color: #042c4f;
+      padding: 8px 100px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
 
-    .logo {
-      height: 60px;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      position: relative;
     }
+
+    /* SETA */
+    .seta {
+      font-size: 22px;
+      color: gold;
+      transition: 0.3s;
+    }
+
+    .logo-container:hover .seta {
+      transform: translateX(-5px);
+    }
+
+    /* TEXTO (só aparece no hover) */
+    .texto-hover {
+      position: absolute;
+      left: 160px;
+      opacity: 0;
+      color: gold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .logo-container:hover .texto-hover {
+      opacity: 1;
+    }
+
+    /* LOGO */
+    .logo {
+      width: 130px;
+      height: 130px;
+      perspective: 1000px;
+      margin: 10px;
+      margin-top: 50px;
+    }
+
+    .logo-inner {
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 217, 0, 0.766);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+
+      position: relative;
+      transform-style: preserve-3d;
+
+      animation: girarSuave 10s ease-in-out infinite;
+    }
+
+    /* faces */
+    .logo-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      backface-visibility: hidden;
+    }
+
+    .logo-front img {
+      width: 70px;
+    }
+
+    .logo-back {
+      transform: rotateY(180deg);
+    }
+
+    .logo-back img {
+      width: 90px;
+    }
+
+    /* ANIMAÇÃO */
+    @keyframes girarSuave {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      45% {
+        transform: rotateY(0deg);
+      }
+
+      55% {
+        transform: rotateY(180deg);
+      }
+
+      90% {
+        transform: rotateY(180deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
 
     .menu {
       list-style: none;
       display: flex;
-      gap: 24px;
+      padding: 0;
+      margin: 0;
+      gap: 20px;
+
     }
 
-    .menu li a {
-      color:#bbd4ec;
+    .menu li {
+      margin-left: 20px;
+      position: relative;
+    }
+
+    .menu a {
+      color: #6dc7e8;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s;
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: block;
     }
 
-    .menu li a:hover {
-      color: var(--highlight);
+    .menu a:hover {
+      background-color: #6498aa;
+    }
+
+    /* === MENU RESPONSIVO === */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: #b5aaaa;
+        padding: 10px 0;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu li {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
     .imagem-banner {
@@ -67,7 +214,7 @@
       padding: 100px 20px;
       color: white;
       text-align: center;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -75,7 +222,8 @@
       margin-top: 30px;
     }
 
-    .imagem-banner h1, .imagem-banner h2 {
+    .imagem-banner h1,
+    .imagem-banner h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
     }
@@ -98,7 +246,7 @@
       border-radius: 16px;
       padding: 32px;
       background: white;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease;
     }
 
@@ -108,7 +256,7 @@
 
     .card h3 {
       font-size: 1.5rem;
-      color:#120741;
+      color: #120741;
       margin-bottom: 12px;
     }
 
@@ -141,7 +289,7 @@
       background-color: white;
       border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .value-item h4 {
@@ -156,7 +304,7 @@
 
 
     footer {
-      background-color:  #042c4f;
+      background-color: #042c4f;
       color: white;
       text-align: center;
       padding: 40px 20px;
@@ -174,10 +322,36 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <img src="logo.png" alt="Logo Hemitur" class="logo">
+
+    <a href="#inicio" class="logo-container">
+
+      <!-- seta -->
+      <div class="seta">←</div>
+
+      <!-- logo -->
+      <div class="logo">
+        <div class="logo-inner">
+
+          <div class="logo-face logo-front">
+            <img src="logo.png" alt="logo">
+          </div>
+
+          <div class="logo-face logo-back">
+            <img src="lua.png" alt="lua">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- texto hover -->
+      <span class="texto-hover">Voltar ao portfólio</span>
+
+    </a>
+
     <ul class="menu">
       <li><a href="index.html">Home</a></li>
       <li><a href="hoteis.html">Hotéis</a></li>
@@ -185,36 +359,45 @@
     </ul>
   </header>
 
-  <section class="imagem-banner" style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090');">
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1518684079-3c830dcef090');">
     <h1>Conectando pessoas ao mundo</h1>
-    <p>Somos a Hemitur, uma agência que acredita que viajar transforma — e que cada viagem deve ser única, acessível e memorável. Mais de 12 mil histórias já passaram por aqui.</p>
+    <p>Somos a Hemitur, uma agência que acredita que viajar transforma — e que cada viagem deve ser única, acessível e
+      memorável. Mais de 12 mil histórias já passaram por aqui.</p>
   </section>
 
   <section class="grid-cards">
     <div class="card">
       <h3>Quem Somos</h3>
-      <p>Nascemos em 2010 com o propósito de oferecer muito mais do que destinos: oferecemos experiências inesquecíveis com acolhimento, confiança e paixão por servir.</p>
+      <p>Nascemos em 2010 com o propósito de oferecer muito mais do que destinos: oferecemos experiências inesquecíveis
+        com acolhimento, confiança e paixão por servir.</p>
     </div>
     <div class="card">
       <h3>Missão</h3>
-      <p>Transformar sonhos em viagens reais, oferecendo suporte completo, roteiros personalizados e um atendimento verdadeiramente humano.</p>
+      <p>Transformar sonhos em viagens reais, oferecendo suporte completo, roteiros personalizados e um atendimento
+        verdadeiramente humano.</p>
     </div>
     <div class="card">
       <h3>Visão</h3>
-      <p>Ser referência nacional em turismo afetivo, ético e inovador, sempre promovendo conexões reais entre pessoas e culturas.</p>
+      <p>Ser referência nacional em turismo afetivo, ético e inovador, sempre promovendo conexões reais entre pessoas e
+        culturas.</p>
     </div>
     <div class="card">
       <h3>Por que a Hemitur?</h3>
-      <p>Mais que uma agência, somos suas parceiras de jornada. Atendimento diferenciado, parcerias com redes confiáveis e roteiros únicos em cada detalhe.</p>
+      <p>Mais que uma agência, somos suas parceiras de jornada. Atendimento diferenciado, parcerias com redes confiáveis
+        e roteiros únicos em cada detalhe.</p>
     </div>
   </section>
 
-  <section class="imagem-banner" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
     <h2>Cada destino guarda uma nova história</h2>
-    <p>Seja uma praia paradisíaca, uma cidade histórica ou uma montanha gelada — com a Hemitur, sua próxima lembrança começa aqui.</p>
+    <p>Seja uma praia paradisíaca, uma cidade histórica ou uma montanha gelada — com a Hemitur, sua próxima lembrança
+      começa aqui.</p>
   </section>
 
-  <section class="imagem-banner" style="background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff');">
+  <section class="imagem-banner"
+    style="background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff');">
     <h2>Explore lugares que contam histórias</h2>
     <p>Conectamos você a destinos únicos, onde cada passo é uma nova lembrança para guardar para sempre.</p>
   </section>
@@ -249,12 +432,13 @@
     <p><strong>Pronto para sua próxima aventura?</strong></p>
     <p><a href="pacote1.html">Ver Nossos Pacotes</a></p>
     <p>
-      <a href="https://wa.me/5585982033367" target="_blank">WhatsApp</a> • 
-      <a href="https://instagram.com/hemitur.oficial" target="_blank">Instagram</a> • 
+      <a href="https://wa.me/5585982033367" target="_blank">WhatsApp</a> •
+      <a href="https://instagram.com/hemitur.oficial" target="_blank">Instagram</a> •
       <a href="mailto:hemitur.oficial@gmail.com">Email</a>
     </p>
     <p>© 2025 Hemitur Turismo. Todos os direitos reservados.</p>
   </footer>
 
 </body>
+
 </html>
